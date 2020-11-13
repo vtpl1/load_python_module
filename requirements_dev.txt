@@ -1,3 +1,6 @@
-pylint
 bump2version
+pylint
 yapf
+rope
+mypy
+pytest

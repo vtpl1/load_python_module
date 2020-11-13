@@ -14,7 +14,7 @@ def read(rel_path):
 
 
 def get_version():
-    return read("VERSION")
+    return read("lopymo/VERSION")
 
 
 setup(
