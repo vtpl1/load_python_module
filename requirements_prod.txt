@@ -1,3 +1,4 @@
 PyYAML
 psutil
 zope.event
+dataclasses

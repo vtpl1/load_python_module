@@ -18,7 +18,7 @@ def get_version():
 
 
 setup(
-    install_requires=["PyYAML", "psutil", "zope.event"],
+    install_requires=["PyYAML", "psutil", "zope.event", "dataclasses"],
     name="lopymo",
     version=get_version(),
     fullname="load_python_module",
