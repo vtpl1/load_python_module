@@ -29,5 +29,14 @@ setup(
     long_description=open("README.md").read(),
     url="https://github.com/vtpl1/load_python_module",
     license="MIT",
-    packages=find_packages(exclude=["*.tests"]),
+    include_package_data=True,
+    packages=find_packages(exclude=["*.tests", "test", "session"]),
+    # package_dir={'negar': 'negar'},
+    package_data={'': ['lopymo/*.yaml', 'VERSION']},
+    entry_points={
+        'console_scripts': [
+            'lopymo = lopymo.main:main',
+        ],
+    }
+    
 )
