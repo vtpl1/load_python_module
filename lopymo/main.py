@@ -22,8 +22,8 @@ def setup_logging(default_path='logging.yaml', default_level=logging.INFO, env_k
     """Setup logging configuration
 
     """
-
-    path = default_path
+    this_dir, _ = os.path.split(__file__)
+    path = os.path.join(this_dir, default_path)
     # value = os.getenv(env_key, None)
     # if value:
     #     path = value
