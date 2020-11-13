@@ -32,7 +32,7 @@ setup(
     include_package_data=True,
     packages=find_packages(exclude=["*.tests", "test", "session"]),
     # package_dir={'negar': 'negar'},
-    package_data={'': ['lopymo/*.yaml', 'VERSION']},
+    package_data={'': ['*.yaml', 'VERSION']},
     entry_points={
         'console_scripts': [
             'lopymo = lopymo.main:main',
