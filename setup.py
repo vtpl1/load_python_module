@@ -18,9 +18,7 @@ def get_version():
 
 
 setup(
-    install_requires=[
-        'PyYAML'
-    ],
+    install_requires=["PyYAML", "psutil", "zope.event"],
     name="load_python_module",
     version=get_version(),
     fullname="load_python_module",
@@ -28,7 +26,8 @@ setup(
     author="Monotosh Das",
     author_email="monotosh.das@videonetics.com",
     keywords="module load",
-    long_description=open('README.md').read(),
+    long_description=open("README.md").read(),
     url="https://github.com/vtpl1/load_python_module",
     license="MIT",
-    packages=find_packages(exclude=["*.tests"]))
+    packages=find_packages(exclude=["*.tests"]),
+)
