@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+
 import codecs
 import os
 
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
+from Cython.Compiler import Options
+Options.embed = "main"
+from Cython.Build import cythonize
 
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
@@ -37,6 +40,8 @@ setup(
         'console_scripts': [
             'lopymo = lopymo.main:main',
         ],
-    }
-    
+    },
+    ext_modules=cythonize([x + os.path.sep + '*.py' for x in [x.replace(
+        '.', os.path.sep) for x in find_packages(exclude=["*.tests", "test", "session"])]]),
+    zip_safe=False
 )

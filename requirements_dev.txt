@@ -4,3 +4,4 @@ yapf
 rope
 mypy
 pytest
+Cython
