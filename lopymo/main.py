@@ -38,13 +38,13 @@ def setup_logging(default_path='logging.yaml', default_level=logging.INFO, env_k
 is_shutdown = threading.Event()
 
 
-def stop_handler(signal_received, frame):
-    del signal_received, frame
+def stop_handler(*args):
+    #del signal_received, frame
     LOGGER.info("")
     LOGGER.info("=============================================")
     LOGGER.info("Bradcasting global shutdown from stop_handler")
     LOGGER.info("=============================================")
-    zope.event.notify(shutdown_event.ShutdownEvent("KeyboardInterrupt received"))
+    #zope.event.notify(shutdown_event.ShutdownEvent("KeyboardInterrupt received"))
     global is_shutdown
     is_shutdown.set()
 
@@ -91,6 +91,8 @@ def main():
     LOGGER.info("              Started  {} {}               ".format(__name__, get_version()))
     LOGGER.info("=============================================")
     print("Using session {}".format(get_session_folder()))
+    x = shutdown_event.ShutdownEvent("KeyboardInterrupt received")
+    print(x)
     try:
         parser = init_argparser()
         args = parser.parse_args()

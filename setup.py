@@ -4,8 +4,8 @@ import codecs
 import os
 
 from setuptools import find_packages, setup
-from Cython.Compiler import Options
-Options.embed = "main"
+# from Cython.Compiler import Options
+# Options.embed = "main"
 from Cython.Build import cythonize
 
 def read(rel_path):
