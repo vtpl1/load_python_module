@@ -91,8 +91,6 @@ def main():
     LOGGER.info("              Started  {} {}               ".format(__name__, get_version()))
     LOGGER.info("=============================================")
     print("Using session {}".format(get_session_folder()))
-    x = shutdown_event.ShutdownEvent("KeyboardInterrupt received")
-    print(x)
     try:
         parser = init_argparser()
         args = parser.parse_args()

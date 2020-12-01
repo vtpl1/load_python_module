@@ -37,7 +37,7 @@ class LogCpuMemUsage(Thread):
         LOGGER_CPU_USAGE.info("CPU Percentage, MEM Percentage")
         while True:
             LOGGER_CPU_USAGE.info(
-                "{}, {}".format(
+                "{:6.1f}, {:6.1f}".format(
                     psutil.cpu_percent(),
                     psutil.virtual_memory().percent,
                 )
