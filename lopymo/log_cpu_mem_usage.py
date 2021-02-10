@@ -1,7 +1,8 @@
-from threading import Thread, Event
 import logging
+from threading import Event, Thread
+
 import psutil
-import zope.event
+
 from .data_models import shutdown_event
 
 LOGGER = logging.getLogger(__name__)
@@ -16,13 +17,7 @@ class LogCpuMemUsage(Thread):
     def __init__(self):
         self.__is_stop = Event()
         self.__is_already_shutting_down = False
-        zope.event.subscribers.append(self.global_shutdown_handler)
         super().__init__()
-
-    def global_shutdown_handler(self, event):
-        if isinstance(event, shutdown_event.ShutdownEvent):
-            LOGGER.info("Global shutdown received %s", str(event.reason))
-            self.stop()
 
     def run(self) -> None:
         LOGGER_CPU_USAGE.info("============== Start ================")
@@ -52,7 +47,6 @@ class LogCpuMemUsage(Thread):
         if self.__is_already_shutting_down:
             return
         self.__is_already_shutting_down = True
-        zope.event.subscribers.remove(self.global_shutdown_handler)
         self.__is_stop.set()
 
     def __del__(self):

@@ -1,0 +1,5 @@
+dataclasses
+marshmallow
+marshmallow-dataclass
+psutil
+ruamel.yaml

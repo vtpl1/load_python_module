@@ -15,13 +15,23 @@ def read(rel_path):
     with codecs.open(os.path.join(here, rel_path), "r") as fp:
         return fp.read()
 
+def read_lines(rel_path):
+    here = os.path.abspath(os.path.dirname(__file__))
+    # intentionally *not* adding an encoding option to open, See:
+    #   https://github.com/pypa/virtualenv/issues/201#issuecomment-3145690
+    with codecs.open(os.path.join(here, rel_path), "r") as fp:
+        return fp.readlines()
 
 def get_version():
     return read("lopymo/VERSION")
 
+def get_install_requires():
+    return [line.strip() for line in read_lines('requirements.prod.txt') if line.strip()]
+
+
 
 setup(
-    install_requires=["PyYAML", "psutil", "zope.event", "dataclasses"],
+    install_requires=get_install_requires(),
     name="lopymo",
     version=get_version(),
     fullname="load_python_module",
