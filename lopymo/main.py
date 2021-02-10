@@ -11,7 +11,7 @@ import time
 import ruamel.yaml
 
 from . import log_cpu_mem_usage
-from .data_models import shutdown_event
+from . import udp_log_server
 from .utils import get_session_folder
 
 LOGGER = logging.getLogger(__name__)
@@ -89,10 +89,13 @@ def main():
             pass
 
         l = log_cpu_mem_usage.LogCpuMemUsage()
+        o_udp_log_server = udp_log_server.UdpLogServer()
         l.start()
+        o_udp_log_server.start()
         global is_shutdown
         while not is_shutdown.wait(10.0):
             continue
+        o_udp_log_server.stop()
         l.stop()
     except Exception as e:
         LOGGER.exception(e)
